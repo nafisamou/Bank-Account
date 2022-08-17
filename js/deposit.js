@@ -6,9 +6,9 @@ document.getElementById('btn-deposit').addEventListener('click',function(){
 // always remember to use .value to get text from an input-field.
 const depositField = document.getElementById('deposit-field');
 const newDepositAmountString = depositField.value;
-const newDepositAmount = parseFloat(newDepositAmountString);
+const newDepositAmount = Math.abs(parseFloat(newDepositAmountString));
 
-// clear the deposit field:
+//step-3: clear the deposit field:
 depositField.value = '';
 
 if(isNaN(newDepositAmount)){
@@ -16,23 +16,23 @@ if(isNaN(newDepositAmount)){
     return;
     }
 
-// step-3: get the current total deposit
+// step-4: get the current total deposit
 // For non-input (text-area) : use innerText to get the text from text-area
 const previoustDeposit = document.getElementById('previous-deposit');
 const previousTotalDepositString = previoustDeposit.innerText;
 const previousTotalDeposit = parseFloat(previousTotalDepositString);
 
 
-//step-4: add numbers to set the total deposit:
+//step-5: add numbers to set the total deposit:
 const currentTotalAmount = newDepositAmount + previousTotalDeposit;
 previoustDeposit.innerText = currentTotalAmount;
 
-//step-5: get balance current total:
+//step-6: get balance current total:
 const balanceTotal = document.getElementById('balance-total');
 const balanceTotalString = balanceTotal.innerText;
 const balanceTotalAmount = parseFloat(balanceTotalString);
 
-// step-6: calculate current total bank balance:
+// step-7: calculate current total bank balance:
 const currentTotalBalance = balanceTotalAmount + newDepositAmount;
 balanceTotal.innerText = currentTotalBalance;
 console.log(currentTotalBalance);
